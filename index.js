@@ -22,11 +22,14 @@ var data = {
 };
 
 io.on('connection', (socket) => {
-    console.log("New connection from " + socket.remotePort);
+    console.log("New connection from " + socket.id);
     socket.emit('data', data);
     socket.on('increment', value => {
         data.x += value;
         io.emit('data', data);
+    });
+    socket.on('addNewPublicationComment', (data) => {
+        io.emit('addNewPublicationComment', data);
     });
 });
 
