@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
         io.emit('data', data);
     });
     socket.on('addNewPublicationComment', (value) => {
-        io.emit('addNewPublicationComment', value);
+        socket.broadcast.emit('addNewPublicationComment', value);
     });
 });
 
