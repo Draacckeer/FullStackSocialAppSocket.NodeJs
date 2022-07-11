@@ -28,8 +28,8 @@ io.on('connection', (socket) => {
         data.x += value;
         io.emit('data', data);
     });
-    socket.on('addNewPublicationComment', (data) => {
-        io.emit('addNewPublicationComment', data);
+    socket.on('addNewPublicationComment', (value) => {
+        io.emit('addNewPublicationComment', value);
     });
 });
 
