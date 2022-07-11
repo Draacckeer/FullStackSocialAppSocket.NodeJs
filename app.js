@@ -1,5 +1,6 @@
 const express = require('express');
-const http = require('http').Server(express);
+const app = express();
+const http = require('http').Server(app);
 const io = require('socket.io')(http, {
     cors: {
         origin: '*',
@@ -7,6 +8,14 @@ const io = require('socket.io')(http, {
     }
 });
 const port = process.env.PORT || 3000;
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+    res.send({ response: "Server is up and running." }).status(200);
+});
+
+app.use('/', router);
 
 var data = {
     x: 123
@@ -22,5 +31,5 @@ io.on('connection', (socket) => {
 });
 
 http.listen(port, () => {
-  console.log('listening on *:' + port);
+    console.log('listening on :' + port);
 });
