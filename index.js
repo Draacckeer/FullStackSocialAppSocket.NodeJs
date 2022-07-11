@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send({ response: "Server is up and running." }).status(200);
 });
 
