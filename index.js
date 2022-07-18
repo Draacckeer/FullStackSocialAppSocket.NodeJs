@@ -17,19 +17,22 @@ app.get("/", (req, res) => {
 
 app.use('/', router);
 
-var data = {
+/*var data = {
     x: 123
-};
+};*/
 
 io.on('connection', (socket) => {
     console.log("New connection from " + socket.id);
-    socket.emit('data', data);
-    socket.on('increment', value => {
+    //socket.emit('data', data);
+    /*socket.on('increment', value => {
         data.x += value;
         io.emit('data', data);
+    });*/
+    socket.on('addNewPublicationComment', (data) => {
+        socket.broadcast.emit('addNewPublicationComment', data);
     });
-    socket.on('addNewPublicationComment', (value) => {
-        socket.broadcast.emit('addNewPublicationComment', value);
+    socket.on('addNewPublication', (data) => {
+        socket.broadcast.emit('addNewPublication', data);
     });
 });
 
