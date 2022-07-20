@@ -28,6 +28,10 @@ io.on('connection', (socket) => {
     socket.on('addNewMessage', (data) => {
         socket.broadcast.emit('addNewMessage', data);
     });
+    socket.on('notification', (data) => {
+        socket.broadcast.emit('notification', data);
+    }
+    });
 });
 
 http.listen(port, () => {
