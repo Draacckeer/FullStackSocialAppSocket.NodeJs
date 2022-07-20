@@ -30,7 +30,6 @@ io.on('connection', (socket) => {
     });
     socket.on('notification', (data) => {
         socket.broadcast.emit('notification', data);
-    }
     });
 });
 
